@@ -11,17 +11,12 @@ this.state = {quiz_position: 1}
     }
 
 render() {
-    const isQuizEnd = this.state.quiz_position-1 === quizData.quiz_questions.length ? "true" : "false";
+    const isQuizEnd = ((this.state.quiz_position-1) === quizData.quiz_questions.length) ? "true" : "false";
     return (
-        isQuizEnd === "true" ? 
         <div>
-        <QuizEnd />
-        <QuizQuestion quiz_question={quizData.quiz_questions[this.state.quiz_position-1]} />
-    </div>
-    :
-    <div>
-        <QuizQuestion quiz_question={quizData.quiz_questions[this.state.quiz_position-1]} />
-    </div>
+        {isQuizEnd ? <QuizEnd /> : 
+        <QuizQuestion quiz_question={quizData.quiz_questions[this.state.quiz_position-1]} />}
+        </div>
     )
 }
 
